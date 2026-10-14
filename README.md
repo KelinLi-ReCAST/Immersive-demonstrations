@@ -223,6 +223,12 @@ With `panda_flag = True`, the script opens a TCP server (`utils.set_robot_arm`, 
 
 ---
 
+## License
+
+The code is released under the [MIT License](LICENSE). The folders in `third_party/` keep their own licences (see the `LICENSE` file in each), and `code/demonstrations/*/triad_openvr.py` keeps the licence of [triad_openvr](https://github.com/TriadSemi/triad_openvr).
+
+---
+
 ## Citation
 
 ```bibtex
