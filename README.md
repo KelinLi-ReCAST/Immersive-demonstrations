@@ -151,10 +151,6 @@ Calibrate the glove, press any button to start:
 
 The result is written to `data/<gripper>/glove_calibration/<demonstrator>.npy` for all three grippers (first 21 values: range, last 21: minimum). For later sessions with the same person, set `glove_calibration = False` and the stored file is loaded instead.
 
-<p align="center">
-  <img src="media/readme/operator_view.jpg" width="560" alt="Demonstrator during calibration and collection">
-</p>
-
 ### Step 3: Collect demonstrations
 
 Choose the settings in the `__main__` block:
