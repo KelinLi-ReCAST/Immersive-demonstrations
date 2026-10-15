@@ -1,5 +1,11 @@
 # Immersive Demonstrations are the Key to Imitation Learning
 
+<p align="center">
+  <a href="https://arxiv.org/abs/2301.09157"><img src="https://img.shields.io/badge/Paper-333333?style=for-the-badge&logo=arxiv&logoColor=white" alt="Paper"></a>
+  <a href="https://github.com/KelinLi-ReCAST/Immersive-demonstrations"><img src="https://img.shields.io/badge/Code-333333?style=for-the-badge&logo=github&logoColor=white" alt="Code"></a>
+  <img src="https://img.shields.io/badge/Dataset-333333?style=for-the-badge&logo=huggingface&logoColor=white" alt="Dataset">
+</p>
+
 Code and data for the paper [*Immersive Demonstrations are the Key to Imitation Learning*](https://arxiv.org/abs/2301.09157) (Kelin Li, Digby Chappell and Nicolas Rojas, ICRA 2023).
 
 The repository contains the demonstration platform: manipulation demonstrations are collected in a PyBullet scene with a [**SenseGlove**](https://senseglove.gitlab.io/SenseGloveDocs/dk1-glove.html) haptic glove and an [**HTC Vive Tracker**](https://developer.vive.com/resources/hardware-guides/vive-tracker-developer-guidelines/), with or without force feedback to the demonstrator. It also contains the demonstrations collected in the user study and the behaviour-cloning scripts.
