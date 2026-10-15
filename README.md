@@ -3,7 +3,7 @@
 <p align="center">
   <a href="https://arxiv.org/abs/2301.09157"><img src="https://img.shields.io/badge/Paper-333333?style=for-the-badge&logo=arxiv&logoColor=white" alt="Paper"></a>
   <a href="https://github.com/KelinLi-ReCAST/Immersive-demonstrations"><img src="https://img.shields.io/badge/Code-333333?style=for-the-badge&logo=github&logoColor=white" alt="Code"></a>
-  <img src="https://img.shields.io/badge/Dataset-333333?style=for-the-badge&logo=huggingface&logoColor=white" alt="Dataset">
+  <a href="https://huggingface.co/datasets/KelinLiIC/Immersive-demonstrations"><img src="https://img.shields.io/badge/Dataset-333333?style=for-the-badge&logo=huggingface&logoColor=white" alt="Dataset"></a>
 </p>
 
 Code and data for the paper [*Immersive Demonstrations are the Key to Imitation Learning*](https://arxiv.org/abs/2301.09157) (Kelin Li, Digby Chappell and Nicolas Rojas, ICRA 2023).
@@ -45,7 +45,7 @@ The Panda is **not** required. With `panda_flag = False` the system is just the 
 
 ## 2. Repository layout
 
-Code, data and media live in separate top-level folders. `third_party/SenseGlove-API-master/` (SenseGlove SDK, Linux libraries only) and `third_party/GraspIt2URDF-master/` (human-hand URDF and meshes) are third-party and keep their own licences. `code/demonstrations/*/triad_openvr.py` is from [triad_openvr](https://github.com/TriadSemi/triad_openvr).
+Code, data and media live in separate top-level folders. `data/` and `media/videos/` are not in git; they are downloaded from [Hugging Face](https://huggingface.co/datasets/KelinLiIC/Immersive-demonstrations) (§3.4). `third_party/SenseGlove-API-master/` (SenseGlove SDK, Linux libraries only) and `third_party/GraspIt2URDF-master/` (human-hand URDF and meshes) are third-party and keep their own licences. `code/demonstrations/*/triad_openvr.py` is from [triad_openvr](https://github.com/TriadSemi/triad_openvr).
 
 ```
 code/
@@ -55,11 +55,11 @@ code/
     RUTH/    ruth_pybullet_nopanda.py    utils.py  evaluation.py  evaluation_wrist.py
     evaluation_wrist_all.py            wrist/finger force comparison across the three grippers
   behavioral_cloning/                  behaviour-cloning training and test scripts, custom gym envs in envs/
-data/
+data/                                  (Hugging Face)
   mano/ franka/ RUTH/                  force/  no_force/  panda/  glove_calibration/  training_results/
   Participants.txt
 media/
-  videos/<gripper>/<condition>/        PyBullet recordings of every trial
+  videos/<gripper>/<condition>/        PyBullet recordings of every trial (Hugging Face)
   plots/                               figures produced by the evaluation scripts
   readme/                              images used in this README
 assets/
@@ -102,6 +102,21 @@ The only absolute paths left (`/home/kelin/workspace_kelin/RAL-ICRA2023/...`) ar
 ```bash
 grep -rl "/home/kelin/workspace_kelin/RAL-ICRA2023" code/behavioral_cloning | \
   xargs sed -i "s#/home/kelin/workspace_kelin/RAL-ICRA2023#$(pwd)#g"
+```
+
+### 3.4 Data
+
+The demonstrations of the user study and their PyBullet recordings are on Hugging Face: [KelinLiIC/Immersive-demonstrations](https://huggingface.co/datasets/KelinLiIC/Immersive-demonstrations) (about 420 MB). The dataset has the same layout as this repository, so download it into the root of your clone:
+
+```bash
+pip install -U huggingface_hub
+hf download KelinLiIC/Immersive-demonstrations --repo-type dataset --local-dir . --include "data/*" --include "media/videos/*"
+```
+
+This creates `data/` and `media/videos/`, which `.gitignore` keeps out of git. The evaluation scripts need the downloaded data. To record new demonstrations without it, create the output folders first:
+
+```bash
+mkdir -p data/{mano,franka,RUTH}/{force,no_force,panda,glove_calibration} media/videos/{mano,franka,RUTH}/{force,no_force,panda}
 ```
 
 ---
@@ -194,7 +209,7 @@ Per successful trial:
 
 `evaluation.py` in each `code/demonstrations/<gripper>/` folder reproduces the force and success-rate plots.
 
-The demonstrations from the user study are included: 10 participants, 5 demonstrations per participant, gripper and condition (`force`, `no_force`, `panda`), together with each participant's glove calibration and the simulation recordings. File names use the participant numbers listed in `data/Participants.txt`.
+The demonstrations from the user study are in the [Hugging Face dataset](https://huggingface.co/datasets/KelinLiIC/Immersive-demonstrations) (§3.4): 10 participants, 5 demonstrations per participant, gripper and condition (`force`, `no_force`, `panda`), together with each participant's glove calibration and the simulation recordings. Participants are identified by number only (1–10), and file names use these numbers.
 
 The behaviour-cloning scripts in `code/behavioral_cloning/` were developed inside the [BEHAVIOR](https://github.com/StanfordVL/behavior) baseline folder (`behavior/baselines/behavioral_cloning/`, with the environments under its `gym/envs/usr/`). Place them there to run them.
 

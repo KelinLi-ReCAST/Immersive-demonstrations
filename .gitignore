@@ -3,3 +3,8 @@ __pycache__/
 *.bak
 .venv/
 README_preview.html
+
+# Dataset and recordings are distributed on Hugging Face (see README, section 3.4)
+data/
+media/videos/
+.cache/
