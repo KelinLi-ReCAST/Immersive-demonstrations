@@ -233,7 +233,6 @@ With `panda_flag = True`, the script opens a TCP server (`utils.set_robot_arm`, 
 
 ## 7. Known limitations
 
-- The control loop is not synchronised to wall-clock time. PyBullet uses its default 1/240 s step and is stepped twice per cycle; the actual loop rate depends on the machine and is not logged.
 - Wrist orientation is obtained by integrating the tracker's angular velocity, so it drifts over long trials. Re-run the script if the hand orientation looks wrong.
 - `get_hand_joints()` parses joint angles from the SDK's text output as whole degrees, and the three-digit branch reads the tens digit from the wrong character (angles ≥ 100° are mis-parsed). It also allocates a new array on each call without freeing it. The published data were collected with this behaviour, so it has been left unchanged.
 - The success criterion is contact between the object and the tray.
