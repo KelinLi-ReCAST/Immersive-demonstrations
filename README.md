@@ -20,9 +20,9 @@ The demonstrator's wrist pose (Vive Tracker) and finger joints (SenseGlove) driv
 |:---:|:---:|:---:|
 | ![mano](media/readme/sim_mano.gif) | ![franka](media/readme/sim_franka.gif) | ![ruth](media/readme/sim_ruth.gif) |
 
-| Cup stacking | Peg insertion |
-|:---:|:---:|
-| ![cup stacking](media/readme/real_robot_cup_stacking.gif) | ![peg insertion](media/readme/real_robot_peg_insertion.gif) |
+| Cup stacking | Peg insertion | Button pressing |
+|:---:|:---:|:---:|
+| ![cup stacking](media/readme/real_robot_cup_stacking.gif) | ![peg insertion](media/readme/real_robot_peg_insertion.gif) | ![button pressing](media/readme/real_robot_button_pressing.gif) |
 
 *Teleoperation of a real robot arm with a dexterous hand on an upgraded version of this platform. The demonstrator (inset, aligned in time) wears a VR headset and a haptic glove (2× speed). The full recordings are in the [dataset](https://huggingface.co/datasets/KelinLiIC/Immersive-demonstrations) (`media/real_robot/`).*
 
