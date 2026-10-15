@@ -20,14 +20,6 @@ The demonstrator's wrist pose (Vive Tracker) and finger joints (SenseGlove) driv
 |:---:|:---:|:---:|
 | ![mano](media/readme/sim_mano.gif) | ![franka](media/readme/sim_franka.gif) | ![ruth](media/readme/sim_ruth.gif) |
 
-| Cup stacking | Peg insertion |
-|:---:|:---:|
-| ![cup stacking](media/readme/real_robot_cup_stacking.gif) | ![peg insertion](media/readme/real_robot_peg_insertion.gif) |
-| **Button pressing** | **Tomato picking** |
-| ![button pressing](media/readme/real_robot_button_pressing.gif) | ![tomato picking](media/readme/real_robot_tomato_picking.gif) |
-
-*Teleoperation of a real robot arm with a dexterous hand on an upgraded version of this platform. The demonstrator (inset, aligned in time) wears a VR headset and a haptic glove (2× speed). The full recordings are in the [dataset](https://huggingface.co/datasets/KelinLiIC/Immersive-demonstrations) (`media/real_robot/`).*
-
 ---
 
 ## 1. Hardware
@@ -121,7 +113,7 @@ pip install -U huggingface_hub
 hf download KelinLiIC/Immersive-demonstrations --repo-type dataset --local-dir . --include "data/*" --include "media/videos/*"
 ```
 
-This creates `data/` and `media/videos/`, which `.gitignore` keeps out of git. The real-robot recordings of the upgraded platform shown at the top of this README are in `media/real_robot/` of the same dataset (`--include "media/real_robot/*"`). The evaluation scripts need the downloaded data. To record new demonstrations without it, create the output folders first:
+This creates `data/` and `media/videos/`, which `.gitignore` keeps out of git. The real-robot recordings of the application tasks (§8) are in `media/real_robot/` of the same dataset (`--include "media/real_robot/*"`). The evaluation scripts need the downloaded data. To record new demonstrations without it, create the output folders first:
 
 ```bash
 mkdir -p data/{mano,franka,RUTH}/{force,no_force,panda,glove_calibration} media/videos/{mano,franka,RUTH}/{force,no_force,panda}
@@ -245,6 +237,18 @@ With `panda_flag = True`, the script opens a TCP server (`utils.set_robot_arm`, 
 - Wrist orientation is obtained by integrating the tracker's angular velocity, so it drifts over long trials. Re-run the script if the hand orientation looks wrong.
 - `get_hand_joints()` parses joint angles from the SDK's text output as whole degrees, and the three-digit branch reads the tens digit from the wrong character (angles ≥ 100° are mis-parsed). It also allocates a new array on each call without freeing it. The published data were collected with this behaviour, so it has been left unchanged.
 - The success criterion is contact between the object and the tray.
+
+---
+
+## 8. Application Tasks
+
+The platform has been upgraded to teleoperate a real robot arm with a dexterous hand: the demonstrator wears a VR headset and a haptic glove. Each video shows the robot with the demonstrator as an inset, aligned in time (2× speed). The full recordings are in the [dataset](https://huggingface.co/datasets/KelinLiIC/Immersive-demonstrations) (`media/real_robot/`, §3.4).
+
+| Pick Tomato | Battery Insertion |
+|:---:|:---:|
+| ![Pick Tomato](media/readme/real_robot_pick_tomato.gif) | ![Battery Insertion](media/readme/real_robot_battery_insertion.gif) |
+| **Plug MSD** | **Press Button** |
+| ![Plug MSD](media/readme/real_robot_plug_msd.gif) | ![Press Button](media/readme/real_robot_press_button.gif) |
 
 ---
 
