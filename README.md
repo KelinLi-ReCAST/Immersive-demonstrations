@@ -26,9 +26,9 @@ The demonstrator's wrist pose (Vive Tracker) and finger joints (SenseGlove) driv
 | Franka Emika Panda (**optional**) | Renders the wrist force to the demonstrator's arm (`panda_flag = True`) | The glove is mounted on the Panda flange through a 3D-printed bracket. Needs a separate robot-side program listening on TCP; see §6 |
 
 <p align="center">
-  <img src="media/readme/setup_overview.jpg" height="420" alt="Overall setup">
+  <img src="media/readme/setup_overview.jpg" width="30%" alt="Overall setup">
   &nbsp;
-  <img src="media/readme/wearing_glove.jpg" height="420" alt="Putting on the SenseGlove">
+  <img src="media/readme/wearing_glove.jpg" width="67%" alt="Putting on the SenseGlove">
 </p>
 
 *Left: the full setup. The monitor shows the PyBullet scene, the demonstrator wears the SenseGlove, and (optional configuration) the hand is coupled to the Panda flange. Right: fitting the glove before calibration.*
