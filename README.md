@@ -20,6 +20,12 @@ The demonstrator's wrist pose (Vive Tracker) and finger joints (SenseGlove) driv
 |:---:|:---:|:---:|
 | ![mano](media/readme/sim_mano.gif) | ![franka](media/readme/sim_franka.gif) | ![ruth](media/readme/sim_ruth.gif) |
 
+<p align="center">
+  <img src="media/readme/real_robot_teleop.gif" width="640" alt="Real robot stacking a cup, teleoperated by a demonstrator with a VR headset and a haptic glove (inset)">
+</p>
+
+*Teleoperation of a real robot arm with a dexterous hand on an upgraded version of this platform. The demonstrator (inset, aligned in time) wears a VR headset and a haptic glove; the robot stacks one cup on another (2× speed). The full recordings are in the [dataset](https://huggingface.co/datasets/KelinLiIC/Immersive-demonstrations) (`media/real_robot/`).*
+
 ---
 
 ## 1. Hardware
@@ -113,7 +119,7 @@ pip install -U huggingface_hub
 hf download KelinLiIC/Immersive-demonstrations --repo-type dataset --local-dir . --include "data/*" --include "media/videos/*"
 ```
 
-This creates `data/` and `media/videos/`, which `.gitignore` keeps out of git. The evaluation scripts need the downloaded data. To record new demonstrations without it, create the output folders first:
+This creates `data/` and `media/videos/`, which `.gitignore` keeps out of git. The real-robot recordings of the upgraded platform shown at the top of this README are in `media/real_robot/` of the same dataset (`--include "media/real_robot/*"`). The evaluation scripts need the downloaded data. To record new demonstrations without it, create the output folders first:
 
 ```bash
 mkdir -p data/{mano,franka,RUTH}/{force,no_force,panda,glove_calibration} media/videos/{mano,franka,RUTH}/{force,no_force,panda}
