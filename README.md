@@ -113,7 +113,7 @@ pip install -U huggingface_hub
 hf download KelinLiIC/Immersive-demonstrations --repo-type dataset --local-dir . --include "data/*" --include "media/videos/*"
 ```
 
-This creates `data/` and `media/videos/`, which `.gitignore` keeps out of git. The real-robot recordings and the demonstrations of the application tasks (§8) are in `media/real_robot/` and `application_tasks/` of the same dataset (`--include "media/real_robot/*" --include "application_tasks/*"`). The evaluation scripts need the downloaded data. To record new demonstrations without it, create the output folders first:
+This creates `data/` and `media/videos/`, which `.gitignore` keeps out of git. The real-robot recordings and the demonstrations of the application tasks (§8) are in `media/real_robot/` and `application_tasks/` of the same dataset, and real-robot pick-and-place demonstrations with and without the SenseGlove in `real_robot/` (`--include "media/real_robot/*" --include "application_tasks/*" --include "real_robot/*"`). The evaluation scripts need the downloaded data. To record new demonstrations without it, create the output folders first:
 
 ```bash
 mkdir -p data/{mano,franka,RUTH}/{force,no_force,panda,glove_calibration} media/videos/{mano,franka,RUTH}/{force,no_force,panda}
@@ -241,7 +241,7 @@ With `panda_flag = True`, the script opens a TCP server (`utils.set_robot_arm`, 
 
 ## 8. Application Tasks
 
-The platform has been upgraded to teleoperate a real robot arm with a dexterous hand: the demonstrator wears a VR headset and a haptic glove. Each video shows the robot with the demonstrator as an inset, aligned in time (2× speed). The full recordings are in the [dataset](https://huggingface.co/datasets/KelinLiIC/Immersive-demonstrations) (`media/real_robot/`, §3.4), together with the teleoperated demonstrations of the four tasks, with and without force feedback, in LeRobot format (`application_tasks/`).
+The platform has been upgraded to teleoperate a real robot arm with a dexterous hand: the demonstrator wears a VR headset and a haptic glove. Each video shows the robot with the demonstrator as an inset, aligned in time (2× speed). The full recordings are in the [dataset](https://huggingface.co/datasets/KelinLiIC/Immersive-demonstrations) (`media/real_robot/`, §3.4), together with the teleoperated demonstrations of the four tasks, with and without force feedback, in LeRobot format (`application_tasks/`), and pick-and-place demonstrations with and without the SenseGlove (`real_robot/`).
 
 | Pick Tomato | Battery Insertion |
 |:---:|:---:|
